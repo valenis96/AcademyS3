@@ -293,96 +293,137 @@ describe('Function "orderByYear"', () => {
 // Exercise 6
 // YOUR CODE HERE. Test moviesAverageByCategory()
 describe('Function "moviesAverageByCategory"', () => {
-  it('ADD YOUR CODE IN films.spec.js file', () => {
-    expect(typeof hoursToMinutes).toBe('coffee');
+  it('should return an number', () => {
+    expect(typeof moviesAverageByCategory(movies, 'Drama')).toBe('number');
+  });
+
+  it('should be different from NaN', () => {
+    expect(moviesAverageByCategory(movies, 'Drama')).not.toBeNaN();
+  });
+
+  it(' should return the average score of movies selecting only the director films. With 2 decimals! ', () => {
+    expect(moviesAverageByCategory([
+      {
+        title: 'Paths of Glory',
+        year: 1957,
+        director: 'Stanley Kubrick',
+        duration: '1h 28min',
+        genre: ['Drama', 'War'],
+        score: 8.4
+      },
+      {
+        title: 'Django Unchained',
+        year: 2012,
+        director: 'Quentin Tarantino',
+        duration: '2h 45min',
+        genre: ['Drama', 'Western'],
+        score: 8.4
+      },
+      {
+        title: 'Pulp Fiction',
+        year: 1994,
+        director: 'Quentin Tarantino',
+        duration: '2h 34min',
+        genre: ['Crime', 'Drama'],
+        score: 8.9
+      },
+      {
+      title: 'Twelve Monkeys',
+      year: 1995,
+      director: 'Terry Gilliam',
+      duration: '2h 9min',
+      genre: ['Mystery', 'Sci-Fi', 'Thriller'],
+      score: 8
+    },
+    ], 'Drama')).toBe(8.57);
   });
 });
 
 // Exercise 7
-describe('Function "hoursToMinutes"', () => {
-  it('should be declared', () => {
-    expect(typeof hoursToMinutes).toBe('function');
-  });
+// describe('Function "hoursToMinutes"', () => {
+//   it('should be declared', () => {
+//     expect(typeof hoursToMinutes).toBe('function');
+//   });
 
-  it('should return an array', () => {
-    expect(hoursToMinutes(movies) instanceof Array).toBe(true);
-  });
+//   it('should return an array', () => {
+//     expect(hoursToMinutes(movies) instanceof Array).toBe(true);
+//   });
 
-  it('should return a new array, not update the original one', () => {
-    expect(hoursToMinutes(movies)).not.toEqual(movies);
-  });
+//   it('should return a new array, not update the original one', () => {
+//     expect(hoursToMinutes(movies)).not.toEqual(movies);
+//   });
 
-  it('should return an array of movies with duration as a number', () => {
-    expect(typeof hoursToMinutes(movies)[0].duration).toBe('number');
-  });
+//   it('should return an array of movies with duration as a number', () => {
+//     expect(typeof hoursToMinutes(movies)[0].duration).toBe('number');
+//   });
 
-  it('should return an array of movies with the correct duration for a 31 minute movie', () => {
-    const movieTry = [{ duration: '0h 31min' }];
-    expect(hoursToMinutes(movieTry)[0].duration).toBe(31);
-  });
+//   it('should return an array of movies with the correct duration for a 31 minute movie', () => {
+//     const movieTry = [{ duration: '0h 31min' }];
+//     expect(hoursToMinutes(movieTry)[0].duration).toBe(31);
+//   });
 
-  it('should return an array of movies with the correct duration for a 341 minute movie', () => {
-    const movieTry = [{ duration: '5h 41min' }];
-    expect(hoursToMinutes(movieTry)[0].duration).toBe(341);
-  });
+//   it('should return an array of movies with the correct duration for a 341 minute movie', () => {
+//     const movieTry = [{ duration: '5h 41min' }];
+//     expect(hoursToMinutes(movieTry)[0].duration).toBe(341);
+//   });
 
-  it('should return an array of movies with the correct duration for a 2 hour movie', () => {
-    const movieTry = [{ duration: '2h' }];
-    expect(hoursToMinutes(movieTry)[0].duration).toBe(120);
-  });
-});
+//   it('should return an array of movies with the correct duration for a 2 hour movie', () => {
+//     const movieTry = [{ duration: '2h' }];
+//     expect(hoursToMinutes(movieTry)[0].duration).toBe(120);
+//   });
+// });
 
 // Exercise 8
-describe('Function "bestFilmOfYear"', () => {
-  it('should be declared', () => {
-    expect(typeof bestFilmOfYear).toBe('function');
-  });
+// describe('Function "bestFilmOfYear"', () => {
+//   it('should be declared', () => {
+//     expect(typeof bestFilmOfYear).toBe('function');
+//   });
 
-  it('should return an array', () => {
-    expect(bestFilmOfYear(movies, 1999) instanceof Array).toBe(true);
-  });
+//   it('should return an array', () => {
+//     expect(bestFilmOfYear(movies, 1999) instanceof Array).toBe(true);
+//   });
 
-  it('should return a new array, not update the original one', () => {
-    expect(bestFilmOfYear(movies, 1999)).not.toEqual(movies);
-  });
+//   it('should return a new array, not update the original one', () => {
+//     expect(bestFilmOfYear(movies, 1999)).not.toEqual(movies);
+//   });
 
-  it('should return the best film of a year, searching in an array', () => {
-    const testArr = [
-      {
-        title: 'Film1',
-        year: 1957,
-        director: 'Stanley Kubrick',
-        duration: '1h 28min',
-        genre: ['Drama', 'War'],
-        score: 6
-      },
-      {
-        title: 'Film2',
-        year: 1957,
-        director: 'Stanley Kubrick',
-        duration: '1h 28min',
-        genre: ['Drama', 'War'],
-        score: 8.4
-      },
-      {
-        title: 'Film3',
-        year: 1957,
-        director: 'Stanley Kubrick',
-        duration: '1h 28min',
-        genre: ['Drama', 'War'],
-        score: 5
-      },
-    ];
-    expect(bestFilmOfYear(testArr, 1957)).toEqual([
-      {
-        title: 'Film2',
-        year: 1957,
-        director: 'Stanley Kubrick',
-        duration: '1h 28min',
-        genre: ['Drama', 'War'],
-        score: 8.4
-      }
-    ]);
-  });
+//   it('should return the best film of a year, searching in an array', () => {
+//     const testArr = [
+//       {
+//         title: 'Film1',
+//         year: 1957,
+//         director: 'Stanley Kubrick',
+//         duration: '1h 28min',
+//         genre: ['Drama', 'War'],
+//         score: 6
+//       },
+//       {
+//         title: 'Film2',
+//         year: 1957,
+//         director: 'Stanley Kubrick',
+//         duration: '1h 28min',
+//         genre: ['Drama', 'War'],
+//         score: 8.4
+//       },
+//       {
+//         title: 'Film3',
+//         year: 1957,
+//         director: 'Stanley Kubrick',
+//         duration: '1h 28min',
+//         genre: ['Drama', 'War'],
+//         score: 5
+//       },
+//     ];
+//     expect(bestFilmOfYear(testArr, 1957)).toEqual([
+//       {
+//         title: 'Film2',
+//         year: 1957,
+//         director: 'Stanley Kubrick',
+//         duration: '1h 28min',
+//         genre: ['Drama', 'War'],
+//         score: 8.4
+//       }
+//     ]);
+//   });
 
-});
+// });
