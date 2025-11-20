@@ -2,9 +2,15 @@
 <html>
 
 <body>
-
-    <h1>Sprint 4 IT ACADEMY</h1>
-    
+    <h1>Sprint 3 IT ACADEMY</h1>
 </body>
+    <button onclick="films.getAllDirectors(data.movies)">Get All Directors</button>
+    <button onclick="films.getMoviesFromDirector(data.movies, 'Quentin Tarantino')">Movies From Director</button>
+    <button onclick="films.moviesAverageOfDirector(data.movies, 'Steven Spielberg')">Movies Average Of Director</button>
+    <button onclick="films.orderAlphabetically(data.movies)">Order Alphabetically</button>
+    <button onclick="films.orderByYear(data.movies)">Order By Year</button>
+    <button onclick="films.moviesAverageByCategory(data.movies, 'Fantasy')">Movies Average By Category</button>
 
+    <script src="films.js" type="module"></script>
+    <script src="data.js" type="module"></script>
 </html>

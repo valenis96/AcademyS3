@@ -2002,7 +2002,11 @@ const movies = [
   }
 ];
 
+// export const data = {movies}
+
 /* export default films; */
 if (typeof module !== 'undefined') {
   module.exports = movies;
 }
+
+// window.data = data;
