@@ -58,6 +58,7 @@ function hoursToMinutes(movies) {
   const minutesNum = minutes?.replace(/\D/g, "") || 0;
   const newDuration = +hoursNum * 60 + +minutesNum
   
+  
   const newDurationMovie = {
     ...movie, 
     duration: newDuration
@@ -69,8 +70,15 @@ function hoursToMinutes(movies) {
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+function bestFilmOfYear(movies, year) {
+  const bestMovieByYear =  
+  movies.filter(movie => movie.year == year).sort((a, b) => {
+    if (a.score < b.score) return 1;
+    if (a.score > b.score) return -1;
+    return 0;
+  }).slice(0, 1)
+  console.log("EXERCICE 8 ->", bestMovieByYear);
+  return bestMovieByYear;
 }
 
 
